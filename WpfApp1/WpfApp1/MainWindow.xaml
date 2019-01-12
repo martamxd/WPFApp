@@ -11,75 +11,83 @@
         
         <StackPanel>
             <TextBlock Text="Dane: " FontWeight="Bold" Margin="0 10"></TextBlock>
+            
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0 0 1 0">
+                        <TextBlock Text="Imie: " Margin="0,5,50,5"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0 0 1 0">
+                        <TextBox x:Name="txtImie" Padding="2" Margin="-48,0,158,0" TextChanged="txtImie_TextCahnged"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0 0 1 0">
+                        <TextBlock Text="Nazwisko: " Margin="0,5,50,5"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0 0 1 0">
+                        <TextBox x:Name="txtNazwisko" Padding="2" Margin="-48,0,158,0" TextChanged="txtNazwisko_TextChanged"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0 0 1 0">
+                        <TextBlock Text="Numer telefonu: " Margin="0,5,50,5"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0 0 1 0">
+                        <TextBox x:Name="txtNrTel" Padding="2" Margin="-48,0,158,0" TextChanged="txtNrTel_TextChanged"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0 0 1 0">
+                        <TextBlock Text="Adres: " Margin="0,5,50,5"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0 0 1 0">
+                        <TextBox x:Name="txtAdres" Padding="2" Margin="-48,0,158,0" HorizontalAlignment="Right" Width="207" TextChanged="txtAdres_TextChanged"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="btnSave" Margin="0 0 10 0 " Grid.Column="0" Content="Zapisz" Click="btnSave_Click" Height="20" VerticalAlignment="Bottom"></Button>
+                    <Button Margin="0 0 10 0 " Grid.Column="1" Content="Usuń" Click="btnDelete_Click"></Button>
+                    <Button Grid.Column="2" Content="Reset" Click="btnReset_Click"></Button>
+
+                </Grid>
+            <TextBlock Text="Szukanie: " FontWeight="Bold" Margin="0 10"></TextBlock>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                    <TextBlock Text="Imie: " Margin="0,5,50,5"/>
-                   
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                    <TextBox Padding="2" Margin="-48,0,158,0"></TextBox>
-                </StackPanel>
+                
+                <TextBox  Padding="2"></TextBox>
+                <Button Margin="10 0 10 0 " Grid.Column="1" Content="Szukaj"></Button>
             </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                    <TextBlock Text="Nazwisko: " Margin="0,5,50,5"/>
-
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                    <TextBox Padding="2" Margin="-48,0,158,0"></TextBox>
-                </StackPanel>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                    <TextBlock Text="Numer telefonu: " Margin="0,5,50,5"/>
-
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                    <TextBox Padding="2" Margin="-48,0,158,0"></TextBox>
-                </StackPanel>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                    <TextBlock Text="Adres: " Margin="0,5,50,5"/>
-
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                    <TextBox Padding="2" Margin="-48,0,158,0"></TextBox>
-                </StackPanel>
-            </Grid>
-
-
-            <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Margin="0 0 10 0 " Grid.Column="0" Content="Zaaktualizuj"></Button>
-            <Button Margin="0 0 10 0 " Grid.Column="1" Content="Usuń"></Button>
-            <Button Grid.Column="2" Content="Reset"></Button>
-
-        </Grid>
-
-
-
+            <DataGrid Margin="10" AutoGenerateColumns="True"/>
         </StackPanel>
+           
     </Border>
 </Window>
