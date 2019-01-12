@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace WpfApp1
 {
@@ -55,6 +56,21 @@ namespace WpfApp1
             }
 
         }
+        void FillDataGridView()
+        {
+            if (sqlCon.State == System.Data.ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("ContactViewOrSearch", sqlCon);
+            sqlDa.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlDa.SelectCommand.Parameters.AddWithValue("@ContactName", txtSzukaj.Text.Trim());
+            DataTable dtbl = new DataTable();
+            sqlDa.Fill(dtbl);
+            dgDane.ItemsSource = dtbl.DefaultView;
+            dgDane.Columns[0].Visibility = Visibility.Collapsed;
+            sqlCon.Close();
+            
+
+        }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -85,5 +101,26 @@ namespace WpfApp1
         {
 
         }
-    }
-}
+
+        private void txtSzukaj_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btn_Szukaj(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FillDataGridView();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Message");
+            }
+        }
+
+        private void dgDane_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
