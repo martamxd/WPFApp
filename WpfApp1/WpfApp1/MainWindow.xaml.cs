@@ -35,6 +35,7 @@ namespace WpfApp1
             {
                 if (sqlCon.State == System.Data.ConnectionState.Closed)
                     sqlCon.Open();
+
                 if(btnSave.Content == "Zapisz")
                 {
                     SqlCommand sqlCmd = new SqlCommand("ContactAddOrEdit", sqlCon);
@@ -61,7 +62,9 @@ namespace WpfApp1
                     sqlCmd.ExecuteNonQuery();
                     MessageBox.Show("Zaaktualizowano!");
                 }
-           
+                Reset();
+                FillDataGridView();
+
             }
             catch (Exception ex)
             {
@@ -91,7 +94,27 @@ namespace WpfApp1
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (sqlCon.State == System.Data.ConnectionState.Closed)
+                    sqlCon.Open();
 
+
+
+                SqlCommand sqlCmd = new SqlCommand("ContactDelete", sqlCon);
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@ContactId", ContactId);
+                sqlCmd.ExecuteNonQuery();
+                MessageBox.Show("Usunięto kontakt!");
+                Reset();
+                FillDataGridView();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Message");
+            }
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
@@ -166,6 +189,12 @@ namespace WpfApp1
 
 
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Reset();
+            FillDataGridView();
         }
     }
 }
