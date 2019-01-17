@@ -35,16 +35,33 @@ namespace WpfApp1
             {
                 if (sqlCon.State == System.Data.ConnectionState.Closed)
                     sqlCon.Open();
-                SqlCommand sqlCmd = new SqlCommand("ContactAddOrEdit", sqlCon);
-                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                sqlCmd.Parameters.AddWithValue("@mode", "Add");
-                sqlCmd.Parameters.AddWithValue("@ContactId", 0);
-                sqlCmd.Parameters.AddWithValue("@Imie", txtImie.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@Nazwisko", txtNazwisko.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@NumerTelefonu", txtNrTel.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@Adres", txtAdres.Text.Trim());
-                sqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Zapisano!");
+                if(btnSave.Content == "Zapisz")
+                {
+                    SqlCommand sqlCmd = new SqlCommand("ContactAddOrEdit", sqlCon);
+                    sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@mode", "Add");
+                    sqlCmd.Parameters.AddWithValue("@ContactId", 0);
+                    sqlCmd.Parameters.AddWithValue("@Imie", txtImie.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Nazwisko", txtNazwisko.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@NumerTelefonu", txtNrTel.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Adres", txtAdres.Text.Trim());
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show("Zapisano!");
+
+                }
+                else {
+                    SqlCommand sqlCmd = new SqlCommand("ContactAddOrEdit", sqlCon);
+                    sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@mode", "Edit");
+                    sqlCmd.Parameters.AddWithValue("@ContactId", ContactId);
+                    sqlCmd.Parameters.AddWithValue("@Imie", txtImie.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Nazwisko", txtNazwisko.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@NumerTelefonu", txtNrTel.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Adres", txtAdres.Text.Trim());
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show("Zaaktualizowano!");
+                }
+           
             }
             catch (Exception ex)
             {
@@ -79,7 +96,7 @@ namespace WpfApp1
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-
+            Reset();
         }
 
         private void txtImie_TextCahnged(object sender, TextChangedEventArgs e)
@@ -125,6 +142,13 @@ namespace WpfApp1
         
         }
 
+        void Reset()
+        {
+            txtImie.Text = txtNazwisko.Text = txtAdres.Text = txtNrTel.Text = "";
+            btnSave.Content = "Zapisz";
+            ContactId = 0;
+            btnDelete.IsEnabled = false;
+        }
         private void dgDane_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dg = (DataGrid)sender;

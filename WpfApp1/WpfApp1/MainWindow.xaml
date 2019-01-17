@@ -73,7 +73,7 @@
 
                 <Button x:Name="btnSave" Margin="0 0 10 0 " Grid.Column="0" Content="Zapisz" Click="btnSave_Click" Height="20" VerticalAlignment="Bottom"></Button>
                 <Button x:Name="btnDelete" Margin="0 0 10 0 " Grid.Column="1" Content="Usuń" Click="btnDelete_Click"></Button>
-                <Button Grid.Column="2" Content="Reset" Click="btnReset_Click"></Button>
+                <Button x:Name="btnReset" Grid.Column="2" Content="Reset" Click="btnReset_Click"></Button>
 
             </Grid>
             <TextBlock Text="Szukanie: " FontWeight="Bold" Margin="0 10"></TextBlock>
