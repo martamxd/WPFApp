@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Kontakty" Height="350" Width="651.1" Loaded="Window_Loaded">
+        Title="Kontakty" Height="350" Width="651.1" Loaded="Window_Loaded" Background="LightBlue" Opacity="17">
 
     <Border Padding="20">
         <StackPanel>
@@ -16,7 +16,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <TextBlock Text="Dane: " FontWeight="Bold" Margin="0 10"></TextBlock>
+                    <TextBlock Text="Dane: " Margin="0 10" Foreground="#FF19216E" FontWeight="Bold" FontSize="16"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
 
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                            <TextBlock Text="Imie: " Margin="0,5"/>
+                            <TextBlock Text="Imie: " Margin="0,5" Foreground="#FF0B1E4F"/>
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="0 0 1 0">
@@ -39,11 +39,11 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                            <TextBlock Text="Nazwisko: " Margin="0,5,50,5"/>
+                            <TextBlock Text="Nazwisko: "  Margin="0,5" Foreground="#FF0B1E4F"/>
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                            <TextBox x:Name="txtNazwisko" Padding="2" Margin="0,0,23,0" TextChanged="txtNazwisko_TextChanged"></TextBox>
+                            <TextBox x:Name="txtNazwisko" Padding="2" Margin="0,0,24,0" TextChanged="txtNazwisko_TextChanged"></TextBox>
                         </StackPanel>
                     </Grid>
                     <Grid>
@@ -52,11 +52,11 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                            <TextBlock Text="Numer telefonu: " Margin="0,5"/>
+                            <TextBlock Text="Numer telefonu: " Foreground="#FF0B1E4F" Margin="0,5"/>
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="0 0 1 0">
-                            <TextBox x:Name="txtNrTel" Padding="2" Margin="0,0,22,0" TextChanged="txtNrTel_TextChanged"></TextBox>
+                            <TextBox x:Name="txtNrTel" Padding="2"  Margin="0,0,22,0" TextChanged="txtNrTel_TextChanged"></TextBox>
                         </StackPanel>
                     </Grid>
                     <Grid>
@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0 0 1 0">
-                            <TextBlock Text="Adres: " Margin="0,5,50,5"/>
+                            <TextBlock Text="Adres: " Foreground="#FF0B1E4F" Margin="0,5,50,5"/>
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="0 0 1 0">
@@ -79,14 +79,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btnSave" Margin="0 0 10 0 " Grid.Column="0" Content="Zapisz" Click="btnSave_Click" Height="20" VerticalAlignment="Bottom"></Button>
-                        <Button x:Name="btnDelete" Margin="0 0 10 0 " Grid.Column="1" Content="Usuń" Click="btnDelete_Click"></Button>
-                        <Button x:Name="btnReset" Margin="0 0 20 0 " Grid.Column="2" Content="Reset" Click="btnReset_Click"></Button>
+                        <Button x:Name="btnSave" Margin="0 0 10 0 " Grid.Column="0" Content="Zapisz" Click="btnSave_Click" Height="20" VerticalAlignment="Bottom" Background="#FF419B33"></Button>
+                        <Button x:Name="btnDelete" Margin="0 0 10 0 " Grid.Column="1" Content="Usuń" Click="btnDelete_Click" Background="#FFEA4621"></Button>
+                        <Button x:Name="btnReset" Margin="0 0 20 0 " Grid.Column="2" Content="Reset" Click="btnReset_Click" Background="#FF8D7A76"></Button>
                     </Grid>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
-                    <TextBlock Text="Szukanie: " FontWeight="Bold" Margin="0 10"></TextBlock>
+                    <TextBlock Text="Szukanie: " Foreground="#FF19216E" FontWeight="Bold" FontSize="16"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -95,7 +95,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBox x:Name="txtSzukaj"  Padding="1" TextChanged="txtSzukaj_TextChanged" Margin="0,0,0,10"></TextBox>
-                        <Button Margin="10,0,10,10" Grid.Column="1" Content="Szukaj" Click="btn_Szukaj"></Button>
+                        <Button Margin="10,0,10,10" Grid.Column="1" Content="Szukaj" Click="btn_Szukaj" Background="#FF4D85C9"></Button>
 
                     </Grid>
                     <StackPanel>
