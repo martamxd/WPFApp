@@ -23,7 +23,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         SqlConnection sqlCon = new SqlConnection(@"Data Source=TOSHIBA;Initial Catalog=DB;Integrated Security=True");
-
+        int ContactId;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,8 +40,8 @@ namespace WpfApp1
                 sqlCmd.Parameters.AddWithValue("@mode", "Add");
                 sqlCmd.Parameters.AddWithValue("@ContactId", 0);
                 sqlCmd.Parameters.AddWithValue("@Imie", txtImie.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@Nazwisko",txtNazwisko.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@NumerTelefonu",txtNrTel.Text.Trim());
+                sqlCmd.Parameters.AddWithValue("@Nazwisko", txtNazwisko.Text.Trim());
+                sqlCmd.Parameters.AddWithValue("@NumerTelefonu", txtNrTel.Text.Trim());
                 sqlCmd.Parameters.AddWithValue("@Adres", txtAdres.Text.Trim());
                 sqlCmd.ExecuteNonQuery();
                 MessageBox.Show("Zapisano!");
@@ -68,7 +68,7 @@ namespace WpfApp1
             dgDane.ItemsSource = dtbl.DefaultView;
             dgDane.Columns[0].Visibility = Visibility.Collapsed;
             sqlCon.Close();
-            
+
 
         }
 
@@ -113,7 +113,7 @@ namespace WpfApp1
             {
                 FillDataGridView();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Message");
             }
@@ -121,6 +121,28 @@ namespace WpfApp1
 
         private void dgDane_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            
+        
         }
+
+        private void dgDane_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = (DataGrid)sender;
+            DataRowView row_selected = dg.SelectedItem as DataRowView;
+            if(row_selected != null)
+            {
+                ContactId = Convert.ToInt32(row_selected[0].ToString());
+                txtImie.Text = row_selected[1].ToString();
+                txtNazwisko.Text = row_selected[2].ToString();
+                txtAdres.Text = row_selected[3].ToString();
+                txtNrTel.Text = row_selected[4].ToString();
+                btnSave.Content = "Zaaktualizuj";
+                btnDelete.IsEnabled = true;
+
+
+
+            }
+        }
+    }
+}
 
